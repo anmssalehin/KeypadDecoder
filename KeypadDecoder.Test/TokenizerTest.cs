@@ -1,10 +1,18 @@
 ﻿namespace KeypadDecoder.Test
 {
+    /// <summary>
+    /// Unit tests for the <see cref="Tokenizer"/> class.
+    /// Verifies that input strings are correctly tokenized into key + press count sequences.
+    /// Also tests handling of invalid input and tokenizer initialization errors.
+    /// </summary>
     [TestClass]
     public sealed class TokenizerTest
     {
         Tokenizer Tokenizer;
 
+        /// <summary>
+        /// Initializes a tokenizer instance for tests with digits 2-9, backspace (*), space as breaker, and '#' as terminator.
+        /// </summary>
         public TokenizerTest()
         {
             Tokenizer = new Tokenizer(
@@ -15,7 +23,9 @@
             );
         }
 
-
+        /// <summary>
+        /// Verifies that repeated key presses of the same key are grouped correctly.
+        /// </summary>
         bool TestFor(string input, List<Token> expectedTokens)
         {
             var computedTokens = Tokenizer.Tokenize(input);
@@ -28,6 +38,9 @@
             return true;
         }
 
+        /// <summary>
+        /// Verifies that separated key presses produce separate tokens.
+        /// </summary>
         [TestMethod]
         public void Decode22()
         {
@@ -41,8 +54,24 @@
             );
         }
 
+        /// <summary>
+        /// Verifies that characters after terminator are ignored.
+        /// </summary>
         [TestMethod]
-        public void Decode22_2()
+        public void ShouldTokenizeRepeatedKeyPresses()
+        {
+            Assert.IsTrue(
+                TestFor(
+                    "22#22",
+                    new List<Token> {
+                        new Token('2', 2)
+                    }
+                )
+            );
+        }
+
+        [TestMethod]
+        public void ShouldTokenizeSeparatedKeyPresses()
         {
             Assert.IsTrue(
                 TestFor(
@@ -57,8 +86,11 @@
         }
 
 
+        /// <summary>
+        /// Verifies that multiple different key sequences are tokenized correctly.
+        /// </summary>
         [TestMethod]
-        public void Decode33_222()
+        public void ShouldTokenizeMultipleKeySequences()
         {
             Assert.IsTrue(
                 TestFor(
@@ -73,8 +105,11 @@
         }
 
 
+        /// <summary>
+        /// Verifies that multiple different key sequences are tokenized correctly even when separator is used.
+        /// </summary>
         [TestMethod]
-        public void Decode332_22()
+        public void ShouldTokenizeSeperatedMultipleKeySequences()
         {
             Assert.IsTrue(
                 TestFor(
@@ -89,8 +124,11 @@
             );
         }
 
+        /// <summary>
+        /// Verifies that alternating sequences are tokenized correctly.
+        /// </summary>
         [TestMethod]
-        public void Decode3323_3232()
+        public void ShouldTokenizeSeperatedAlternatingKeySequences()
         {
             Assert.IsTrue(TestFor(
                "3323 3232#",
@@ -107,8 +145,11 @@
            ));
         }
 
+        /// <summary>
+        /// Verifies that mixed sequences are tokenized correctly.
+        /// </summary>
         [TestMethod]
-        public void Decode922_2229_933344444()
+        public void ShouldTokenizeMixedSequences()
         {
             Assert.IsTrue(TestFor(
                 "922 2229 933344444#",
@@ -125,6 +166,9 @@
             ));
         }
 
+        /// <summary>
+        /// Verifies that unknown keys throw <see cref="UnknownKeyException"/>.
+        /// </summary>
         [TestMethod]
         public void ThrowsOnUnrecognizedCharacter()
         {
@@ -143,6 +187,9 @@
 
         }
 
+        /// <summary>
+        /// Verifies that input without the terminator character '#' throws <see cref="TerminatorNotFoundException"/>.
+        /// </summary>
         [TestMethod]
         public void ThrowsIfNotTerminated()
         {
@@ -161,6 +208,9 @@
 
         }
 
+        /// <summary>
+        /// Verifies that a tokenizer cannot be initialized with a null breaker character.
+        /// </summary>
         [TestMethod]
         public void ThrowsIfBreakerIsNull()
         {
@@ -183,6 +233,9 @@
             }
         }
 
+        /// <summary>
+        /// Verifies that a tokenizer cannot be initialized with a null terminator character.
+        /// </summary>
         [TestMethod]
         public void ThrowsIfTerminatorIsNull()
         {
