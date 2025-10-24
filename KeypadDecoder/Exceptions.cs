@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KeypadDecoder
+﻿namespace KeypadDecoder
 {
     /// <summary>
     /// Thrown when the tokenizer is initialized with invalid or missing parameters.

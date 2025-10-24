@@ -1,8 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
-
-using KeypadDecoder;
-
-namespace KeypadDecoder.Test
+﻿namespace KeypadDecoder.Test
 {
     [TestClass]
     public sealed class TokenizerTest

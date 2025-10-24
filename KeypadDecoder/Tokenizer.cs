@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KeypadDecoder
+﻿namespace KeypadDecoder
 {
     /// <summary>
     /// Represents a key press grouping on a keypad,
