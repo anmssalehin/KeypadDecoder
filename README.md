@@ -50,13 +50,13 @@ Located in KeypadDecoder.Tests project
 
   
 # Running the Project
-**Prerequisites: **
+**Prerequisites** : 
 .NET 8 SDK
 
-**Run from CLI: **
+**Run from CLI** : 
 dotnet run --project KeypadDecoder
 
-**Visual Studio: **
+**Visual Studio** : 
 Open the solution and run
 
 
