@@ -1,47 +1,59 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace KeypadDecoder.Test
+﻿namespace KeypadDecoder.Test
 {
+    /// <summary>
+    /// Unit tests for the <see cref="Solution"/> static interface.
+    /// Verifies that <see cref="Solution.OldPhonePad"/> correctly decodes
+    /// </summary>
     [TestClass]
     public class SolutionTest
     {
+        /// <summary>
+        /// Verifies decoding of a single repeated key press.
+        /// </summary>
         [TestMethod]
-        public void Decode33()
+        public void VerifySingle()
         {
             var result = Solution.OldPhonePad("33#");
             Assert.IsNotNull(result);
             Assert.AreEqual(result, "e");
         }
 
+        /// <summary>
+        /// Verifies decoding with backspace usage.
+        /// </summary>
         [TestMethod]
-        public void Decode227b()
+        public void VerifyBackspace()
         {
             var result = Solution.OldPhonePad("227*#");
             Assert.IsNotNull(result);
             Assert.AreEqual(result, "b");
         }
 
-
+        /// <summary>
+        /// Verifies decoding of a multi-key sequence with breaks.
+        /// </summary>
         [TestMethod]
-        public void Decode4433555_555666()
+        public void VerifyMultipleKey()
         {
             var result = Solution.OldPhonePad("4433555 555666#");
             Assert.IsNotNull(result);
             Assert.AreEqual(result, "hello");
         }
 
+        /// <summary>
+        /// Verifies decoding of a more complex sequence with backspace.
+        /// </summary>
         [TestMethod]
-        public void Decode8_88777444666b664()
+        public void VerifyComplexSequence()
         {
             var result = Solution.OldPhonePad("8 88777444666*664#");
             Assert.IsNotNull(result);
             Assert.AreEqual(result, "turing");
         }
 
+        /// <summary>
+        /// Verifies that input containing unsupported keys returns an empty string.
+        /// </summary>
         [TestMethod]
         public void DecodeUnsupportedEncoding()
         {
