@@ -1,14 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text;
 
 namespace KeypadDecoder.Test
 {
+    /// <summary>
+    /// Unit tests for <see cref="CharacterKeyProcessor"/> and <see cref="BackKeyProcessor"/>.
+    /// </summary>
     [TestClass]
     public class KeyProcessorTest
     {
+        /// <summary>
+        /// Verifies that pressing a character key multiple times appends the correct letter.
+        /// </summary>
         [TestMethod]
         public void TestCharacterB()
         {
@@ -17,6 +19,9 @@ namespace KeypadDecoder.Test
             Assert.AreEqual(prevState.ToString(), "xsdb");
         }
 
+        /// <summary>
+        /// Verifies that the backspace key removes the last character from the input state.
+        /// </summary>
         [TestMethod]
         public void TestBackspace()
         {
@@ -25,6 +30,9 @@ namespace KeypadDecoder.Test
             Assert.AreEqual(prevState.ToString(), "xs");
         }
 
+        /// <summary>
+        /// Verifies that the backspace key behaves correctly state even when it's empty.
+        /// </summary>
         [TestMethod]
         public void TestBackspace2()
         {
@@ -37,6 +45,10 @@ namespace KeypadDecoder.Test
             Assert.AreEqual(prevState.ToString(), "");
         }
 
+        /// <summary>
+        /// Verifies that processing a token with a key mismatch 
+        /// throws a <see cref="TokenProcessMisalignmentException"/> with correct details.
+        /// </summary>
         [TestMethod]
         public void TestTokenMisalignment()
         {
