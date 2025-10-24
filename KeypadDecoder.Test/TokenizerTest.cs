@@ -58,7 +58,7 @@
         /// Verifies that characters after terminator are ignored.
         /// </summary>
         [TestMethod]
-        public void ShouldTokenizeRepeatedKeyPresses()
+        public void VerifyRepeatedKeyPresses()
         {
             Assert.IsTrue(
                 TestFor(
@@ -71,7 +71,7 @@
         }
 
         [TestMethod]
-        public void ShouldTokenizeSeparatedKeyPresses()
+        public void VerifySeparatedKeyPresses()
         {
             Assert.IsTrue(
                 TestFor(
@@ -90,7 +90,7 @@
         /// Verifies that multiple different key sequences are tokenized correctly.
         /// </summary>
         [TestMethod]
-        public void ShouldTokenizeMultipleKeySequences()
+        public void VerifyMultipleKeySequences()
         {
             Assert.IsTrue(
                 TestFor(
@@ -109,7 +109,7 @@
         /// Verifies that multiple different key sequences are tokenized correctly even when separator is used.
         /// </summary>
         [TestMethod]
-        public void ShouldTokenizeSeperatedMultipleKeySequences()
+        public void VerifySeperatedMultipleKeySequences()
         {
             Assert.IsTrue(
                 TestFor(
@@ -128,7 +128,7 @@
         /// Verifies that alternating sequences are tokenized correctly.
         /// </summary>
         [TestMethod]
-        public void ShouldTokenizeSeperatedAlternatingKeySequences()
+        public void VerifySeperatedAlternatingKeySequences()
         {
             Assert.IsTrue(TestFor(
                "3323 3232#",
@@ -149,7 +149,7 @@
         /// Verifies that mixed sequences are tokenized correctly.
         /// </summary>
         [TestMethod]
-        public void ShouldTokenizeMixedSequences()
+        public void VerifyMixedSequences()
         {
             Assert.IsTrue(TestFor(
                 "922 2229 933344444#",

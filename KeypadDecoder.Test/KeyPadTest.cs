@@ -1,10 +1,16 @@
 ﻿namespace KeypadDecoder.Test
 {
+    /// <summary>
+    /// Unit tests for the <see cref="KeyPad"/> class.
+    /// </summary>
     [TestClass]
     public class PadTest
     {
         KeyPad Pad;
 
+        /// <summary>
+        /// Initializes a KeyPad instance for multiple test cases
+        /// </summary>
         public PadTest()
         {
             Pad = new PadBuilder()
@@ -16,6 +22,11 @@
             .build();
         }
 
+
+        /// <summary>
+        /// Verifies that attempting to decode a key that has no associated processor
+        /// throws a <see cref="KeyProcessorNotFoundException"/>.
+        /// </summary>
         [TestMethod]
         public void ThrowsIfKeyNotFound()
         {
@@ -46,6 +57,11 @@
             }
         }
 
+
+        /// <summary>
+        /// Verifies that decoding an input containing an unknown key 
+        /// throws an <see cref="UnknownKeyException"/>.
+        /// </summary>
         [TestMethod]
         public void ThrowsAtUnknownKey()
         {
@@ -63,8 +79,11 @@
             }
         }
 
+        /// <summary>
+        /// Verifies correct decoding of a typical key sequence with backspace usage.
+        /// </summary>
         [TestMethod]
-        public void Decode223b33()
+        public void VerifyTypicalScenario()
         {
             try
             {
@@ -75,8 +94,11 @@
             }
         }
 
+        /// <summary>
+        /// Verifies decoding of a long repeated key sequence with backspace.
+        /// </summary>
         [TestMethod]
-        public void Decode222222223b33()
+        public void VerifyLongSequence()
         {
             try
             {
