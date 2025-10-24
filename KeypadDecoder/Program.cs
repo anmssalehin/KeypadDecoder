@@ -11,8 +11,11 @@
 
             input = input.Trim();
             if (input == "q") break;
+            if (input.Length == 0) continue;
             if (input.Length > 0 && input[input.Length - 1] != '#') input += "#";
-            Console.WriteLine($"Decoded text: {KeypadDecoder.Solution.OldPhonePad(input)}");
+
+            var decodedText = KeypadDecoder.Solution.OldPhonePad(input);
+            Console.WriteLine($"Decoded text: {decodedText}");
         }
     }
 }
